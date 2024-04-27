@@ -17,8 +17,6 @@ def get_book_text(path):
 def get_chars_dict(text):
     word_counts = {}
     for c in text:
-        if not c.isalpha():
-            continue
         c = c.lower()
         if not c in word_counts:
             word_counts[c] = 0
@@ -40,6 +38,7 @@ def get_char_counts_sorted(char_dict):
 
 def print_char_report(char_data_sorted):
     for v in char_data_sorted:
-        print(f"The '{v["name"]}' character was found {v["count"]} times")
+        if v['name'].isalpha():
+            print(f"The '{v["name"]}' character was found {v["count"]} times")
 
 main()
